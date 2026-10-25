@@ -1,0 +1,30 @@
+name: Verify
+on: [push, pull_request]
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+          cache-dependency-path: frontend/package-lock.json
+      - run: pip install -r requirements-dev.txt
+      - run: npm ci --prefix frontend
+      - run: npm run build --prefix frontend
+      - run: python -m pytest -q
+      - run: docker build -t winddesk .
+      - name: Container smoke test
+        run: |
+          docker run -d --name winddesk -p 8000:8000 winddesk
+          for i in $(seq 1 20); do
+            if curl -fsS http://localhost:8000/api/health; then break; fi
+            sleep 1
+          done
+          curl -fsS http://localhost:8000/api/health
+          curl -fsS http://localhost:8000/ > /dev/null
+          docker stop winddesk

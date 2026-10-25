@@ -111,7 +111,7 @@ Invalid dates or times return HTTP 422. Missing or invalid snapshots return HTTP
 | `frontend/src/style.css` | Responsive visual design |
 | `frontend/vite.config.js` | Build to `public/`, local API proxy |
 | `frontend/package-lock.json` | Locked frontend dependency graph |
-| `public/` | Prebuilt frontend, also rebuilt during deployment |
+| `public/` | Generated frontend output, rebuilt during deployment |
 | `data/snapshot.json.gz` | Actual Elexon records |
 | `data/provenance.json` | Source requests, counts, retrieval timestamp, hash |
 | `scripts/fetch_data.py` | Reproducible offline ingestion |
@@ -135,7 +135,7 @@ Tests verify cutoff boundaries, future-publication exclusion, actual revision se
 ## Deploy on Vercel
 
 1. Push this folder as the root of a public GitHub repository. Do not commit virtual environments or `node_modules`.
-2. The repository is linked to Vercel project `q7m4x9p2`; pushes to the production branch deploy automatically.
+2. The current production app is deployed in Vercel project `q7m4x9p2`. To enable automatic deploys from future GitHub pushes, connect this repository in that project's Vercel Git settings.
 3. The configured build command runs `npm ci --prefix frontend && npm run build --prefix frontend`. React output is placed in root `public/`, which Vercel serves as static files. Python handles `/api/*` and `/docs`.
 4. Verify `/`, `/api/health`, `/api/dashboard`, CSV, and `/docs` after deployment.
 5. Check all submitted URLs in an incognito browser. Production reviewer access is public.

@@ -12,15 +12,16 @@ Validated 25 October 2026 (Asia/Calcutta user date).
 - Default day (14 January decision / 15 January delivery): 24/24 matched; MAE 1,041.8333 MW.
 - FastAPI TestClient verifies HTTP routes, static index, CSV content, date/time validation, and snapshot integrity.
 - Tests also exercise every January date at 00:00, 09:00, 12:30, and 23:59 to ensure selected publications do not exceed the decision cutoff.
+- Public Vercel checks after SSO was disabled: `/`, `/api/health`, and `/api/dashboard?decision=2026-01-14&cutoff=09:00` returned HTTP 200.
+- Public GitHub repository contains the project source and bundled data on `main` (commit `79026575c350b07fa88be71ed0cd166108087583`).
 
 ## Verification limits
 
 - Docker binary/daemon is unavailable. Docker build/runtime validation is defined in CI but has not executed here.
-- Browser extension context is unavailable. Managed preview startup fails because the preview daemon mailbox is absent. No browser rendering, mobile visual QA, chart-tooltip interaction, or real-browser download test was completed. The build and HTTP tests do not substitute for these checks.
-- GitHub repository creation and code publication remain pending; the GitHub account connector has no repository-creation action. The public anonymous repo does not yet exist.
+- Browser inspection confirmed the deployed dashboard, charts, metrics, and hourly table. Mobile visual QA, chart-tooltip interaction, and a real-browser CSV download test remain unverified.
+- The source is public on GitHub. The existing Vercel project is not connected to that repository for automatic deploys; connect it in Vercel Git settings if push-triggered deploys are required.
 - A demo script is included; no finished video or YouTube upload exists.
-- The Vite build reports a JavaScript bundle over 500 kB before gzip (about 169 kB gzipped); code splitting is a potential optimization, not a correctness failure.
 
 ## Remaining verification before submission
 
-Run the Docker/CI checks, perform desktop and mobile browser QA, verify the deployed API/static routing, record and upload the video, and open all three submission URLs in incognito.
+Run the Docker/CI checks, perform mobile visual QA and a browser CSV download, record and upload the video, and open all three submission URLs in incognito.

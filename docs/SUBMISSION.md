@@ -10,7 +10,7 @@ The application is deployed and the source is published. Only the recorded and u
 | Automated tests | 14 passed |
 | React production build | Passed |
 | Browser interaction and visual verification | Pending; preview service unavailable |
-| Public anonymous GitHub repository | Pending GitHub connection |
+| Public GitHub repository | Published: https://github.com/rarjun7777/GRID-BRICKS---ASSIGNMENT |
 | Vercel application | Deployed with public reviewer access enabled |
 | GitHub source | https://github.com/rarjun7777/GRID-BRICKS---ASSIGNMENT |
 | Unlisted video | Script ready; recording and upload pending |
@@ -22,7 +22,7 @@ The source is published in the public repository above. The `.gitignore` exclude
 
 ## Publish application
 
-Import the repository in Vercel and follow README deployment instructions. Record the actual deployed production URL in the README. Confirm the page and `/api/health` work while signed out. Do not submit an authentication-protected preview URL as a publicly accessible app.
+The app is already deployed at https://q7m4x9p2.vercel.app/ with Vercel SSO disabled. The existing Vercel project is not connected to GitHub for automatic deploys; connect the repository in Vercel Git settings if you want pushes to redeploy it. Confirm the page and `/api/health` work while signed out. Do not submit an authentication-protected preview URL as a publicly accessible app.
 
 ## Record and upload video
 
